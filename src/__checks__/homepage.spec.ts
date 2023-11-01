@@ -4,11 +4,22 @@ import { defaults } from '../defaults'
 // You can override the default Playwright test timeout of 30s
 // test.setTimeout(60_000)
 
-test('Checkly Homepage', async ({ page }) => {
+test('WireMock Homepage', async ({ page }) => {
   await page.setViewportSize(defaults.playwright.viewportSize)
   const response = await page.goto(defaults.pageUrl)
 
   expect(response?.status()).toBeLessThan(400)
-  await expect(page).toHaveTitle(/Danube WebShop/)
+  await expect(page).toHaveTitle(/WireMock - flexible/)
   await page.screenshot({ path: 'homepage.jpg' })
 })
+
+
+test('WireMock API Templates Library Homepage', async ({ page }) => {
+  await page.setViewportSize(defaults.playwright.viewportSize)
+  const response = await page.goto(defaults.pageUrl)
+
+  expect(response?.status()).toBeLessThan(400)
+  await expect(page).toHaveTitle(/WireMock | API Templates Library/)
+  await page.screenshot({ path: 'homepage.jpg' })
+})
+

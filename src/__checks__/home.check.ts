@@ -1,9 +1,9 @@
 import * as path from 'path'
 import { BrowserCheck } from 'checkly/constructs'
-import { smsChannel, emailChannel } from '../alert-channels'
+import { emailChannel } from '../alert-channels'
 import { websiteGroup } from './website-group.check'
 
-const alertChannels = [smsChannel, emailChannel]
+const alertChannels = [ emailChannel]
 
 /*
 * In this example, we bundle all basic checks needed to check the Checkly homepage. We explicitly define the Browser
@@ -18,14 +18,5 @@ new BrowserCheck('homepage-browser-check', {
   group: websiteGroup,
   code: {
     entrypoint: path.join(__dirname, 'homepage.spec.ts')
-  },
-})
-
-new BrowserCheck('login-browser-check', {
-  name: 'Login Check',
-  alertChannels,
-  group: websiteGroup,
-  code: {
-    entrypoint: path.join(__dirname, 'login.spec.ts')
   },
 })
